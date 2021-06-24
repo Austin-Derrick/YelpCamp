@@ -1,9 +1,10 @@
 const express = require('express');
 const Review = require('../models/review');
+const Campground = require('../models/campground');
 const ExpressError = require('../utils/ExpressError');
 const {reviewSchema } = require('../schemas.js');
 const catchAsync = require('../utils/catchAsync');
-const router = express.Router();
+const router = express.Router({mergeParams: true});
 
 const validateReview = (req, res, next) => {
     const {error} = reviewSchema.validate(req.body);
